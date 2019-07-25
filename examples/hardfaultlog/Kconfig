@@ -1,0 +1,30 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config EXAMPLES_HARDFAULTLOG
+	tristate "Hardfault log example"
+	default n
+	---help---
+		Enable the hardfault log example
+
+if EXAMPLES_HARDFAULTLOG
+
+config EXAMPLES_HARDFAULTLOG_PROGNAME
+	string "Program name"
+	default "hardfaultlog"
+	depends on BUILD_LOADABLE
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config EXAMPLES_HARDFAULTLOG_PRIORITY
+	int "Hardfaultlog task priority"
+	default 100
+
+config EXAMPLES_HARDFAULTLOG_STACKSIZE
+	int "Hardfaultlog stack size"
+	default 2048
+
+endif
